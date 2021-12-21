@@ -32343,6 +32343,8 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
     }, /* @__PURE__ */ import_react46.default.createElement(Stack, {
       anchor: "bottom"
     }, /* @__PURE__ */ import_react46.default.createElement(Box, null, /* @__PURE__ */ import_react46.default.createElement(Image, {
+      height: "100%",
+      width: "100%",
       fit: "cover",
       src: album.image
     })), /* @__PURE__ */ import_react46.default.createElement(Box, {
