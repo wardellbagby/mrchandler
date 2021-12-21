@@ -18,7 +18,7 @@ export const LargeAlbum = ({ album, onClick }: LargeAlbumProps) => {
       <Box width={width} height={width}>
         <Stack anchor="bottom">
           <Box>
-            <Image fit="cover" src={album.image} />
+            <Image height="100%" width="100%" fit="cover" src={album.image} />
           </Box>
           <Box
             direction={"column"}
