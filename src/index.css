@@ -1,0 +1,5 @@
+@import "../node_modules/@fontsource/roboto/latin.css";
+
+body {
+  font-family: "Roboto", sans-serif;
+}
