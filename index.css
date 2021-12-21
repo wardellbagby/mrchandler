@@ -1,0 +1,48 @@
+/* node_modules/@fontsource/roboto/latin.css */
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100;
+  src: url(./roboto-latin-100-normal-WAYR6QSS.woff2) format("woff2"), url(./roboto-latin-100-normal-7OGJMSPW.woff) format("woff");
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300;
+  src: url(./roboto-latin-300-normal-BX6IYHRR.woff2) format("woff2"), url(./roboto-latin-300-normal-YXT3EWXP.woff) format("woff");
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url(./roboto-latin-400-normal-POGXOGF2.woff2) format("woff2"), url(./roboto-latin-400-normal-U2IEJXJZ.woff) format("woff");
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url(./roboto-latin-500-normal-67TPDXAU.woff2) format("woff2"), url(./roboto-latin-500-normal-FSMFWZQT.woff) format("woff");
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 700;
+  src: url(./roboto-latin-700-normal-DAT4PHXY.woff2) format("woff2"), url(./roboto-latin-700-normal-64CYSYRX.woff) format("woff");
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 900;
+  src: url(./roboto-latin-900-normal-DTMJV22B.woff2) format("woff2"), url(./roboto-latin-900-normal-BJYAX7F7.woff) format("woff");
+}
+
+/* src/index.css */
+body {
+  font-family: "Roboto", sans-serif;
+}
