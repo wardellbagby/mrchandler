@@ -8,6 +8,7 @@ const theme: ThemeType = {
     colors: {
       brand: "#5d4037",
       background: "#c9ad7f",
+      "accent-1": "#ffffff",
     },
     font: {
       size: "14px",
