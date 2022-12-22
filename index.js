@@ -42695,7 +42695,7 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
               onClick: () => {
                 sendAnalyticsEvent({
                   title: `${album.title} - ${service}`,
-                  path: album.title[service]
+                  path: album.links[service]
                 });
                 window.open(album.links[service]);
               }
