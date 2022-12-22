@@ -1,4 +1,4 @@
-<html>
+<html lang="en">
   <head>
     <title>Mr. Chandler</title>
     <meta
@@ -6,6 +6,20 @@
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover"
     />
     <link rel="stylesheet" href="./index.css" />
+    <script type="text/javascript">
+      if (location.search[1] === "/") {
+        const decoded = location.search
+          .slice(1)
+          .split("&")
+          .map((s) => s.replace(/~and~/g, "&"))
+          .join("?");
+        window.history.replaceState(
+          null,
+          null,
+          location.pathname.slice(0, -1) + decoded + location.hash
+        );
+      }
+    </script>
   </head>
   <body>
     <div id="app"></div>
