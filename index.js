@@ -38144,11 +38144,12 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
 
   // src/sendAnalyticsEvent.ts
   var sendAnalyticsEvent = (event2) => {
-    if (document.visibilityState !== "visible" || !window.goatcounter || !!window.goatcounter.filter?.()) {
+    if (document.visibilityState !== "visible" || !window.goatcounter || !!window.goatcounter?.filter?.() || !("sendBeacon" in navigator)) {
       console.debug("Ignoring analytics event", {
         visibilityState: document.visibilityState,
         goatcounter: !!window.goatcounter,
-        filter: !!window.goatcounter.filter?.()
+        filter: !!window.goatcounter?.filter?.(),
+        hasSendBeacon: "sendBeacon" in navigator
       });
       return;
     }
