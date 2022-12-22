@@ -38161,6 +38161,7 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
         Button,
         {
           hoverIndicator: true,
+          "data-goatcounter-click": "About",
           icon: /* @__PURE__ */ import_react51.default.createElement(MdInfo, { size: 24 }),
           onClick: () => goTo("about"),
           label: "About"
@@ -38169,6 +38170,7 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
         Button,
         {
           hoverIndicator: true,
+          "data-goatcounter-click": "Twitter",
           icon: /* @__PURE__ */ import_react51.default.createElement(SiTwitter, { size: 24 }),
           label: "Twitter",
           onClick: () => window.open("https://twitter.com/mrchandlerraps")
@@ -38205,6 +38207,7 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
       {
         align: "center",
         background: album.colors.background,
+        "data-goatcounter-click": album.title,
         onClick: () => onClick()
       },
       /* @__PURE__ */ import_react52.default.createElement(Box, { width, height: width }, /* @__PURE__ */ import_react52.default.createElement(Stack, { anchor: "bottom" }, /* @__PURE__ */ import_react52.default.createElement(Box, null, /* @__PURE__ */ import_react52.default.createElement(Image, { height: "100%", width: "100%", fit: "cover", src: album.image })), /* @__PURE__ */ import_react52.default.createElement(
