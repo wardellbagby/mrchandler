@@ -1,6 +1,7 @@
 import { Stack, Image, Box, Paragraph, Heading } from "grommet";
 import React from "react";
-import { Album } from "../album/Album";
+import { Album } from "./Album";
+import { sendAnalyticsEvent } from "../sendAnalyticsEvent";
 
 export interface LargeAlbumProps {
   album: Album;
@@ -13,7 +14,13 @@ export const LargeAlbum = ({ album, onClick }: LargeAlbumProps) => {
     <Box
       align="center"
       background={album.colors.background}
-      onClick={() => onClick()}
+      onClick={() => {
+        sendAnalyticsEvent({
+          path: `Details - ${album.title}`,
+          title: album.title,
+        });
+        onClick();
+      }}
     >
       <Box width={width} height={width}>
         <Stack anchor="bottom">

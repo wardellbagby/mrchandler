@@ -1,4 +1,4 @@
-import { escape, replace } from "lodash-es";
+import { escape, replace, startCase, toLower } from "lodash-es";
 
 export interface Album {
   title: string;
@@ -17,6 +17,15 @@ export interface Album {
     tidal?: string;
   };
 }
+
+export const getServiceLabel = (id: keyof Album["links"]): string => {
+  switch (id) {
+    case "soundcloud":
+      return "SoundCloud";
+    default:
+      return startCase(toLower(id));
+  }
+};
 
 export const getId = (album: Album): string => {
   return escape(replace(album.title.toLowerCase(), /\s/g, "-"));

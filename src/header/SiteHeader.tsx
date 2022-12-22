@@ -5,6 +5,7 @@ import React from "react";
 import { About } from "./About";
 import { getRandomSubtitle } from "./Subtitles";
 import { Route, Routes, useNavigate } from "react-router-dom";
+import { sendAnalyticsEvent } from "../sendAnalyticsEvent";
 
 export const SiteHeader = () => {
   const subtitle = getRandomSubtitle();
@@ -32,14 +33,26 @@ export const SiteHeader = () => {
             <Button
               hoverIndicator
               icon={<AboutIcon size={24} />}
-              onClick={() => goTo("about")}
+              onClick={() => {
+                sendAnalyticsEvent({
+                  path: "About",
+                });
+                goTo("about");
+              }}
               label={"About"}
             />
             <Button
               hoverIndicator
               icon={<Twitter size={24} />}
               label={"Twitter"}
-              onClick={() => window.open("https://twitter.com/mrchandlerraps")}
+              onClick={() => {
+                const url = "https://twitter.com/mrchandlerraps";
+                sendAnalyticsEvent({
+                  path: url,
+                  title: "Twitter",
+                });
+                window.open(url);
+              }}
             />
           </Nav>
         </Box>

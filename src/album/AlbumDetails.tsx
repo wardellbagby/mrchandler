@@ -17,27 +17,29 @@ import {
 } from "react-icons/si";
 import { MdClose as Close } from "react-icons/md";
 import React, { ReactElement, useMemo } from "react";
-import { Album } from "./Album";
+import { Album, getServiceLabel } from "./Album";
+import { sendAnalyticsEvent } from "../sendAnalyticsEvent";
 
 const MusicServices = ({ album }: { album: Album }) => {
   const musicServices = useMemo(() => {
     return Object.keys(album.links)
-      .map((service) => {
+      .map((service: keyof typeof album.links) => {
+        const serviceLabel = getServiceLabel(service);
         let icon: ReactElement;
         if (service === "spotify") {
-          icon = <Spotify size={48} />;
+          icon = <Spotify size={48} aria-label={serviceLabel} />;
         }
         if (service === "apple_music") {
-          icon = <AppleMusic size={48} />;
+          icon = <AppleMusic size={48} aria-label={serviceLabel} />;
         }
         if (service === "soundcloud") {
-          icon = <Soundcloud size={48} />;
+          icon = <Soundcloud size={48} aria-label={serviceLabel} />;
         }
         if (service === "bandcamp") {
-          icon = <Bandcamp size={48} />;
+          icon = <Bandcamp size={48} aria-label={serviceLabel} />;
         }
         if (service === "tidal") {
-          icon = <Tidal size={48} />;
+          icon = <Tidal size={48} aria-label={serviceLabel} />;
         }
 
         if (icon) {
@@ -46,7 +48,13 @@ const MusicServices = ({ album }: { album: Album }) => {
               hoverIndicator
               icon={icon}
               key={service}
-              onClick={() => window.open(album.links[service])}
+              onClick={() => {
+                sendAnalyticsEvent({
+                  title: `${album.title} - ${serviceLabel}`,
+                  path: album.links[service],
+                });
+                window.open(album.links[service]);
+              }}
             />
           );
         }
