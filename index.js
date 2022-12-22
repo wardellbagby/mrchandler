@@ -42653,7 +42653,7 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
             {
               hoverIndicator: true,
               "data-goatcounter-click": album.links[service],
-              "data-goatcounter-title": `${album.title} - ${service}`,
+              "data-goatcounter-title": album.links[service],
               icon,
               key: service,
               onClick: () => window.open(album.links[service])
