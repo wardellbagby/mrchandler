@@ -38142,6 +38142,21 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
     }, [callback]);
   }
 
+  // src/sendAnalyticsEvent.ts
+  var sendAnalyticsEvent = (event2) => {
+    if (document.visibilityState !== "hidden" || window.goatcounter || !window.goatcounter.filter?.()) {
+      return;
+    }
+    const url = window.goatcounter?.url({
+      title: event2.path,
+      ...event2,
+      event: true
+    });
+    if (url) {
+      navigator.sendBeacon(url);
+    }
+  };
+
   // src/header/SiteHeader.tsx
   var SiteHeader = () => {
     const subtitle = getRandomSubtitle();
@@ -38161,21 +38176,29 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
         Button,
         {
           hoverIndicator: true,
-          "data-goatcounter-click": "About",
-          "data-goatcounter-title": "About",
           icon: /* @__PURE__ */ import_react51.default.createElement(MdInfo, { size: 24 }),
-          onClick: () => goTo("about"),
+          onClick: () => {
+            sendAnalyticsEvent({
+              path: "About"
+            });
+            goTo("about");
+          },
           label: "About"
         }
       ), /* @__PURE__ */ import_react51.default.createElement(
         Button,
         {
           hoverIndicator: true,
-          "data-goatcounter-click": "https://twitter.com/mrchandlerraps",
-          "data-goatcounter-title": "Twitter",
           icon: /* @__PURE__ */ import_react51.default.createElement(SiTwitter, { size: 24 }),
           label: "Twitter",
-          onClick: () => window.open("https://twitter.com/mrchandlerraps")
+          onClick: () => {
+            const url = "https://twitter.com/mrchandlerraps";
+            sendAnalyticsEvent({
+              path: url,
+              title: "Twitter"
+            });
+            window.open(url);
+          }
         }
       ))
     )), /* @__PURE__ */ import_react51.default.createElement(Routes, null, /* @__PURE__ */ import_react51.default.createElement(
@@ -38209,9 +38232,13 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
       {
         align: "center",
         background: album.colors.background,
-        "data-goatcounter-click": `Details - ${album.title}`,
-        "data-goatcounter-title": album.title,
-        onClick: () => onClick()
+        onClick: () => {
+          sendAnalyticsEvent({
+            path: `Details - ${album.title}`,
+            title: album.title
+          });
+          onClick();
+        }
       },
       /* @__PURE__ */ import_react52.default.createElement(Box, { width, height: width }, /* @__PURE__ */ import_react52.default.createElement(Stack, { anchor: "bottom" }, /* @__PURE__ */ import_react52.default.createElement(Box, null, /* @__PURE__ */ import_react52.default.createElement(Image, { height: "100%", width: "100%", fit: "cover", src: album.image })), /* @__PURE__ */ import_react52.default.createElement(
         Box,
@@ -42652,11 +42679,15 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
             Button,
             {
               hoverIndicator: true,
-              "data-goatcounter-click": album.links[service],
-              "data-goatcounter-title": album.links[service],
               icon,
               key: service,
-              onClick: () => window.open(album.links[service])
+              onClick: () => {
+                sendAnalyticsEvent({
+                  title: `${album.title} - ${service}`,
+                  path: album.title[service]
+                });
+                window.open(album.links[service]);
+              }
             }
           );
         }
