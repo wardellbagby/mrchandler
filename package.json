@@ -5,8 +5,8 @@
   "main": "index.ts",
   "private": true,
   "scripts": {
-    "build": "mkdir -p dist/ && cp src/index.html dist/ && cp src/404.html dist/ && esbuild --bundle src/index.tsx --outfile=dist/index.js --loader:.woff2=file --loader:.woff=file --loader:.png=file",
-    "start": "npm run build -- --servedir=dist",
+    "build": "node build-scripts/build.mjs",
+    "start": "node build-scripts/start.mjs",
     "lint": "tsc --noEmit && eslint . --ext .ts,.tsx"
   },
   "author": "",
@@ -16,6 +16,7 @@
     "@typescript-eslint/eslint-plugin": "^5.47.0",
     "@typescript-eslint/parser": "^5.47.0",
     "esbuild": "^0.16.10",
+    "esbuild-plugin-copy": "^2.0.1",
     "eslint": "^8.30.0",
     "prettier": "^2.8.1",
     "typescript": "^4.9.4"
