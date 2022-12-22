@@ -2,13 +2,13 @@ import { Header, Box, Heading, Nav, Button, Layer, Text } from "grommet";
 import { SiTwitter as Twitter } from "react-icons/si";
 import { MdInfo as AboutIcon } from "react-icons/md";
 import React from "react";
-import { useState } from "react";
 import { About } from "./About";
 import { getRandomSubtitle } from "./Subtitles";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 export const SiteHeader = () => {
-  const [showAbout, setShowAbout] = useState(false);
   const subtitle = getRandomSubtitle();
+  const goTo = useNavigate();
   return (
     <>
       <Header background={"brand"} pad={"small"}>
@@ -32,7 +32,7 @@ export const SiteHeader = () => {
             <Button
               hoverIndicator
               icon={<AboutIcon size={24} />}
-              onClick={() => setShowAbout(true)}
+              onClick={() => goTo("about")}
               label={"About"}
             />
             <Button
@@ -44,18 +44,23 @@ export const SiteHeader = () => {
           </Nav>
         </Box>
       </Header>
-      {showAbout && (
-        <Layer
-          onEsc={() => setShowAbout(false)}
-          onClickOutside={() => setShowAbout(false)}
-          background={"#00000000"}
-          responsive={false}
-        >
-          <Box fill alignContent="center">
-            <About onClose={() => setShowAbout(false)} />
-          </Box>
-        </Layer>
-      )}
+      <Routes>
+        <Route
+          path={"about"}
+          element={
+            <Layer
+              onEsc={() => goTo(-1)}
+              onClickOutside={() => goTo(-1)}
+              background={"#00000000"}
+              responsive={false}
+            >
+              <Box fill alignContent="center">
+                <About onClose={() => goTo(-1)} />
+              </Box>
+            </Layer>
+          }
+        />
+      </Routes>
     </>
   );
 };

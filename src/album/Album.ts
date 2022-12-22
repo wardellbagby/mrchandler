@@ -1,3 +1,5 @@
+import { escape, replace } from "lodash-es";
+
 export interface Album {
   title: string;
   short_description: string;
@@ -15,3 +17,7 @@ export interface Album {
     tidal?: string;
   };
 }
+
+export const getId = (album: Album): string => {
+  return escape(replace(album.title.toLowerCase(), /\s/g, "-"));
+};

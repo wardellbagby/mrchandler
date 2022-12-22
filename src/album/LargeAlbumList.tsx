@@ -1,12 +1,12 @@
-import { useState } from "react";
+import React from "react";
 import { LargeAlbum } from "./LargeAlbum";
 import { Box, Layer, List, Spinner, Text } from "grommet";
 import { assign, createMachine, EventObject } from "xstate";
 import { getAlbums } from "./getAlbums";
 import { useMachine } from "@xstate/react";
-import { Album } from "./Album";
-import React from "react";
+import { Album, getId } from "./Album";
 import { AlbumDetails } from "./AlbumDetails";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 interface AlbumListContext {
   albums: Album[];
@@ -15,6 +15,7 @@ interface AlbumListContext {
 interface AlbumListEvent extends EventObject {
   type: "LOAD";
 }
+
 type AlbumListStates =
   | { value: "idle" | "loading" | "rejected"; context: null }
   | { value: "resolved"; context: AlbumListContext };
@@ -27,7 +28,7 @@ const albumListMachine = createMachine<
   id: "album_loader",
   initial: "loading",
   context: {
-    albums: null,
+    albums: [],
   },
   states: {
     loading: {
@@ -56,7 +57,7 @@ const albumListMachine = createMachine<
 
 export const LargeAlbumList = () => {
   const [state] = useMachine(albumListMachine);
-  const [albumDetails, setAlbumDetails] = useState<Album>(null);
+  const goTo = useNavigate();
 
   if (state.matches("loading") || state.matches("idle")) {
     return (
@@ -85,23 +86,30 @@ export const LargeAlbumList = () => {
           <LargeAlbum
             key={album.title}
             album={album}
-            onClick={() => setAlbumDetails(album)}
+            onClick={() => goTo({ pathname: `/music/${getId(album)}` })}
           />
         )}
       />
-      {albumDetails && (
-        <Layer
-          onEsc={() => setAlbumDetails(null)}
-          onClickOutside={() => setAlbumDetails(null)}
-          background={"#00000000"}
-          responsive={false}
-        >
-          <AlbumDetails
-            album={albumDetails}
-            onClose={() => setAlbumDetails(null)}
-          />
-        </Layer>
-      )}
+      <Routes>
+        <Route path={"music"}>
+          {state.context.albums.map((album) => (
+            <Route
+              path={getId(album)}
+              key={getId(album)}
+              element={
+                <Layer
+                  onEsc={() => goTo(-1)}
+                  onClickOutside={() => goTo(-1)}
+                  background={"#00000000"}
+                  responsive={false}
+                >
+                  <AlbumDetails album={album} onClose={() => goTo(-1)} />
+                </Layer>
+              }
+            />
+          ))}
+        </Route>
+      </Routes>
     </>
   );
 };
