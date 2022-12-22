@@ -81,7 +81,8 @@ export const AlbumDetails = ({
           margin={{ vertical: "medium" }}
           alignSelf="start"
           hoverIndicator
-          icon={<Close size={24} onClick={onClose} />}
+          onClick={onClose}
+          icon={<Close size={24} />}
         />
       </CardHeader>
       <CardBody overflow={"auto"}>

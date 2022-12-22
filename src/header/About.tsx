@@ -22,10 +22,11 @@ export const About = ({ onClose }: { onClose: () => void }) => {
         <Heading>About Mr. Chandler</Heading>
         <Box flex="grow" />
         <Button
+          onClick={onClose}
           margin={{ vertical: "medium" }}
           alignSelf="start"
           hoverIndicator
-          icon={<Close size={24} onClick={onClose} />}
+          icon={<Close size={24} />}
         />
       </CardHeader>
       <CardBody overflow={"auto"}>

@@ -11,7 +11,7 @@ export const SiteHeader = () => {
   const goTo = useNavigate();
   return (
     <>
-      <Header background={"brand"} pad={"small"}>
+      <Header background={"brand"} pad={"xxsmall"}>
         <Box
           direction="row"
           alignSelf="center"
