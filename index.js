@@ -38145,6 +38145,11 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
   // src/sendAnalyticsEvent.ts
   var sendAnalyticsEvent = (event2) => {
     if (document.visibilityState !== "hidden" || window.goatcounter || !window.goatcounter.filter?.()) {
+      console.debug("Ignoring analytics event", {
+        visible: document.visibilityState !== "hidden",
+        goatcounter: !!window.goatcounter,
+        filter: !window.goatcounter.filter?.()
+      });
       return;
     }
     const url = window.goatcounter?.url({
@@ -38153,7 +38158,13 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
       event: true
     });
     if (url) {
-      navigator.sendBeacon(url);
+      const success = navigator.sendBeacon(url);
+      console.debug("Analytics result", {
+        url,
+        success
+      });
+    } else {
+      console.debug("Ignoring analytics event - invalid url", { url });
     }
   };
 
