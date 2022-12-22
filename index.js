@@ -38144,9 +38144,9 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
 
   // src/sendAnalyticsEvent.ts
   var sendAnalyticsEvent = (event2) => {
-    if (document.visibilityState !== "hidden" || window.goatcounter || !!window.goatcounter.filter?.()) {
+    if (document.visibilityState !== "visible" || !window.goatcounter || !!window.goatcounter.filter?.()) {
       console.debug("Ignoring analytics event", {
-        visible: document.visibilityState !== "hidden",
+        visibilityState: document.visibilityState,
         goatcounter: !!window.goatcounter,
         filter: !!window.goatcounter.filter?.()
       });
