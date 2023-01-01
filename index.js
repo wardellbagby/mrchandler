@@ -36418,6 +36418,9 @@
   function MdInfo(props) {
     return GenIcon({ "tag": "svg", "attr": { "viewBox": "0 0 24 24" }, "child": [{ "tag": "path", "attr": { "fill": "none", "d": "M0 0h24v24H0z" } }, { "tag": "path", "attr": { "d": "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" } }] })(props);
   }
+  function MdChevronRight(props) {
+    return GenIcon({ "tag": "svg", "attr": { "viewBox": "0 0 24 24" }, "child": [{ "tag": "path", "attr": { "fill": "none", "d": "M0 0h24v24H0z" } }, { "tag": "path", "attr": { "d": "M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" } }] })(props);
+  }
   function MdClose(props) {
     return GenIcon({ "tag": "svg", "attr": { "viewBox": "0 0 24 24" }, "child": [{ "tag": "path", "attr": { "fill": "none", "d": "M0 0h24v24H0z" } }, { "tag": "path", "attr": { "d": "M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" } }] })(props);
   }
@@ -38173,14 +38176,14 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
   var SiteHeader = () => {
     const subtitle = getRandomSubtitle();
     const goTo = useNavigate();
-    return /* @__PURE__ */ import_react51.default.createElement(import_react51.default.Fragment, null, /* @__PURE__ */ import_react51.default.createElement(Header, { background: "brand", pad: "xxsmall" }, /* @__PURE__ */ import_react51.default.createElement(
+    return /* @__PURE__ */ import_react51.default.createElement(import_react51.default.Fragment, null, /* @__PURE__ */ import_react51.default.createElement(Header, { background: "brand", pad: "xxsmall", sticky: "scrollup" }, /* @__PURE__ */ import_react51.default.createElement(
       Box,
       {
         direction: "row",
         alignSelf: "center",
         align: "center",
         fill: true,
-        pad: { horizontal: "xlarge", vertical: "medium" }
+        pad: { horizontal: "large", vertical: "medium" }
       },
       /* @__PURE__ */ import_react51.default.createElement(Box, { direction: "column" }, /* @__PURE__ */ import_react51.default.createElement(Heading, { level: 3, margin: "none" }, "Mr. Chandler"), /* @__PURE__ */ import_react51.default.createElement(Box, { pad: { vertical: "xsmall" } }, /* @__PURE__ */ import_react51.default.createElement(Text, { style: { fontStyle: "italic" } }, subtitle))),
       /* @__PURE__ */ import_react51.default.createElement(Box, { flex: "grow" }),
@@ -38255,22 +38258,49 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
       /* @__PURE__ */ import_react52.default.createElement(Box, { width, height: width }, /* @__PURE__ */ import_react52.default.createElement(Stack, { anchor: "bottom" }, /* @__PURE__ */ import_react52.default.createElement(Box, null, /* @__PURE__ */ import_react52.default.createElement(Image, { height: "100%", width: "100%", fit: "cover", src: album.image })), /* @__PURE__ */ import_react52.default.createElement(
         Box,
         {
-          direction: "column",
+          direction: "row",
           align: "center",
           width,
+          justify: "around",
           background: textBackground
         },
-        /* @__PURE__ */ import_react52.default.createElement(Box, { align: "center", width: "100%" }, /* @__PURE__ */ import_react52.default.createElement(Heading, { color: album.colors.text }, album.title)),
-        /* @__PURE__ */ import_react52.default.createElement(Box, { align: "center", width: "100%" }, /* @__PURE__ */ import_react52.default.createElement(
-          Paragraph,
+        /* @__PURE__ */ import_react52.default.createElement(Box, { basis: "48px", flex: { grow: 0, shrink: 0 } }),
+        /* @__PURE__ */ import_react52.default.createElement(
+          Box,
           {
-            style: { fontStyle: "italic" },
-            color: album.colors.text,
-            size: "large",
-            textAlign: "center"
+            direction: "column",
+            align: "center",
+            flex: { grow: 1, shrink: 1 }
           },
-          album.short_description
-        ))
+          /* @__PURE__ */ import_react52.default.createElement(
+            Heading,
+            {
+              color: album.colors.text,
+              margin: "medium",
+              textAlign: "center"
+            },
+            album.title
+          ),
+          /* @__PURE__ */ import_react52.default.createElement(
+            Paragraph,
+            {
+              margin: "small",
+              style: { fontStyle: "italic" },
+              color: album.colors.text,
+              size: "large",
+              textAlign: "center"
+            },
+            album.short_description
+          )
+        ),
+        /* @__PURE__ */ import_react52.default.createElement(
+          MdChevronRight,
+          {
+            size: 48,
+            color: album.colors.text,
+            style: { flex: "0 0 auto" }
+          }
+        )
       )))
     );
   };
@@ -43122,6 +43152,8 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
             {
               hoverIndicator: true,
               icon,
+              size: "small",
+              tip: serviceLabel,
               key: service,
               onClick: () => {
                 sendAnalyticsEvent({
@@ -43135,31 +43167,43 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
         }
       }).filter((value) => value);
     }, []);
-    return /* @__PURE__ */ import_react56.default.createElement(Box, { direction: "row", fill: true, justify: "between" }, musicServices);
+    return /* @__PURE__ */ import_react56.default.createElement(Box, { direction: "row", fill: true, justify: "between", wrap: true }, musicServices);
   };
   var AlbumDetails = ({
     album,
     onClose
   }) => {
     return /* @__PURE__ */ import_react56.default.createElement(
-      Card,
+      import_styled_components29.ThemeContext.Extend,
       {
-        width: "large",
-        pad: { horizontal: "large" },
-        background: album.colors.background
-      },
-      /* @__PURE__ */ import_react56.default.createElement(CardHeader, null, /* @__PURE__ */ import_react56.default.createElement(Heading, null, album.title), /* @__PURE__ */ import_react56.default.createElement(Box, { flex: "grow" }), /* @__PURE__ */ import_react56.default.createElement(
-        Button,
-        {
-          margin: { vertical: "medium" },
-          alignSelf: "start",
-          hoverIndicator: true,
-          onClick: onClose,
-          icon: /* @__PURE__ */ import_react56.default.createElement(MdClose, { size: 24 })
+        value: {
+          tip: {
+            content: {
+              background: album.colors.background
+            }
+          }
         }
-      )),
-      /* @__PURE__ */ import_react56.default.createElement(CardBody, { overflow: "auto" }, /* @__PURE__ */ import_react56.default.createElement(Text, { style: { whiteSpace: "pre-line" } }, album.long_description)),
-      /* @__PURE__ */ import_react56.default.createElement(CardFooter, { pad: "small", direction: "column" }, /* @__PURE__ */ import_react56.default.createElement(MusicServices, { album }))
+      },
+      /* @__PURE__ */ import_react56.default.createElement(
+        Card,
+        {
+          width: "large",
+          pad: { horizontal: "large" },
+          background: album.colors.background
+        },
+        /* @__PURE__ */ import_react56.default.createElement(CardHeader, null, /* @__PURE__ */ import_react56.default.createElement(Heading, null, album.title), /* @__PURE__ */ import_react56.default.createElement(Box, { flex: "grow" }), /* @__PURE__ */ import_react56.default.createElement(
+          Button,
+          {
+            margin: { vertical: "medium" },
+            alignSelf: "start",
+            hoverIndicator: true,
+            onClick: onClose,
+            icon: /* @__PURE__ */ import_react56.default.createElement(MdClose, { size: 24 })
+          }
+        )),
+        /* @__PURE__ */ import_react56.default.createElement(CardBody, { overflow: "auto" }, /* @__PURE__ */ import_react56.default.createElement(Text, { style: { whiteSpace: "pre-line" } }, album.long_description)),
+        /* @__PURE__ */ import_react56.default.createElement(CardFooter, { pad: "small", direction: "column" }, /* @__PURE__ */ import_react56.default.createElement(MusicServices, { album }))
+      )
     );
   };
 
@@ -43210,7 +43254,6 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
         margin: "none",
         pad: "none",
         border: false,
-        style: { overflowX: "hidden" },
         children: (album) => /* @__PURE__ */ import_react57.default.createElement(
           LargeAlbum,
           {
@@ -43254,7 +43297,7 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
     }
   };
   var App = () => {
-    return /* @__PURE__ */ import_react59.default.createElement(Grommet, { theme, full: true, background: "background-back", themeMode: "dark" }, /* @__PURE__ */ import_react59.default.createElement(Box, { fill: true }, /* @__PURE__ */ import_react59.default.createElement(SiteHeader, null), /* @__PURE__ */ import_react59.default.createElement(Box, { direction: "row", flex: true }, /* @__PURE__ */ import_react59.default.createElement(Main, { fill: true }, /* @__PURE__ */ import_react59.default.createElement(LargeAlbumList, null)))));
+    return /* @__PURE__ */ import_react59.default.createElement(Grommet, { theme, full: true, background: "background-back", themeMode: "dark" }, /* @__PURE__ */ import_react59.default.createElement(SiteHeader, null), /* @__PURE__ */ import_react59.default.createElement(Main, { fill: true, overflow: "unset" }, /* @__PURE__ */ import_react59.default.createElement(LargeAlbumList, null)));
   };
 
   // src/index.tsx
