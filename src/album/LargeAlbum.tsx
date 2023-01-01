@@ -2,6 +2,7 @@ import { Stack, Image, Box, Paragraph, Heading } from "grommet";
 import React from "react";
 import { Album } from "./Album";
 import { sendAnalyticsEvent } from "../sendAnalyticsEvent";
+import { MdChevronRight } from "react-icons/all";
 
 export interface LargeAlbumProps {
   album: Album;
@@ -28,16 +29,27 @@ export const LargeAlbum = ({ album, onClick }: LargeAlbumProps) => {
             <Image height="100%" width="100%" fit="cover" src={album.image} />
           </Box>
           <Box
-            direction={"column"}
+            direction={"row"}
             align="center"
             width={width}
+            justify={"around"}
             background={textBackground}
           >
-            <Box align="center" width="100%">
-              <Heading color={album.colors.text}>{album.title}</Heading>
-            </Box>
-            <Box align="center" width="100%">
+            <Box basis={"48px"} flex={{ grow: 0, shrink: 0 }} />
+            <Box
+              direction={"column"}
+              align={"center"}
+              flex={{ grow: 1, shrink: 1 }}
+            >
+              <Heading
+                color={album.colors.text}
+                margin={"medium"}
+                textAlign={"center"}
+              >
+                {album.title}
+              </Heading>
               <Paragraph
+                margin={"small"}
                 style={{ fontStyle: "italic" }}
                 color={album.colors.text}
                 size="large"
@@ -46,6 +58,11 @@ export const LargeAlbum = ({ album, onClick }: LargeAlbumProps) => {
                 {album.short_description}
               </Paragraph>
             </Box>
+            <MdChevronRight
+              size={48}
+              color={album.colors.text}
+              style={{ flex: "0 0 auto" }}
+            />
           </Box>
         </Stack>
       </Box>
