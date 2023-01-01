@@ -12,7 +12,7 @@ export const SiteHeader = () => {
   const goTo = useNavigate();
   return (
     <>
-      <Header background={"brand"} pad={"xxsmall"}>
+      <Header background={"brand"} pad={"xxsmall"} sticky={"scrollup"}>
         <Box
           direction="row"
           alignSelf="center"

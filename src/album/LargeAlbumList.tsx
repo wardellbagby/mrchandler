@@ -81,7 +81,6 @@ export const LargeAlbumList = () => {
         margin={"none"}
         pad={"none"}
         border={false}
-        style={{ overflowX: "hidden" }}
         children={(album) => (
           <LargeAlbum
             key={album.title}

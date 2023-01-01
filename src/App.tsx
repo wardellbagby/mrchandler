@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grommet, Main, ThemeType } from "grommet";
+import { Grommet, Main, ThemeType } from "grommet";
 import { SiteHeader } from "./header/SiteHeader";
 import { LargeAlbumList } from "./album/LargeAlbumList";
 
@@ -20,14 +20,10 @@ const theme: ThemeType = {
 export const App = () => {
   return (
     <Grommet theme={theme} full background="background-back" themeMode="dark">
-      <Box fill>
-        <SiteHeader />
-        <Box direction="row" flex>
-          <Main fill>
-            <LargeAlbumList />
-          </Main>
-        </Box>
-      </Box>
+      <SiteHeader />
+      <Main fill overflow={"unset"}>
+        <LargeAlbumList />
+      </Main>
     </Grommet>
   );
 };
