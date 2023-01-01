@@ -7,6 +7,7 @@ import {
   CardHeader,
   Heading,
   Text,
+  ThemeContext,
 } from "grommet";
 import {
   SiSpotify as Spotify,
@@ -47,6 +48,8 @@ const MusicServices = ({ album }: { album: Album }) => {
             <Button
               hoverIndicator
               icon={icon}
+              size={"small"}
+              tip={serviceLabel}
               key={service}
               onClick={() => {
                 sendAnalyticsEvent({
@@ -63,7 +66,7 @@ const MusicServices = ({ album }: { album: Album }) => {
   }, []);
 
   return (
-    <Box direction="row" fill justify="between">
+    <Box direction="row" fill justify="between" wrap={true}>
       {musicServices}
     </Box>
   );
@@ -77,28 +80,40 @@ export const AlbumDetails = ({
   onClose: () => void;
 }) => {
   return (
-    <Card
-      width="large"
-      pad={{ horizontal: "large" }}
-      background={album.colors.background}
+    <ThemeContext.Extend
+      value={{
+        tip: {
+          content: {
+            background: album.colors.background,
+          },
+        },
+      }}
     >
-      <CardHeader>
-        <Heading>{album.title}</Heading>
-        <Box flex="grow" />
-        <Button
-          margin={{ vertical: "medium" }}
-          alignSelf="start"
-          hoverIndicator
-          onClick={onClose}
-          icon={<Close size={24} />}
-        />
-      </CardHeader>
-      <CardBody overflow={"auto"}>
-        <Text style={{ whiteSpace: "pre-line" }}>{album.long_description}</Text>
-      </CardBody>
-      <CardFooter pad="small" direction="column">
-        <MusicServices album={album} />
-      </CardFooter>
-    </Card>
+      <Card
+        width="large"
+        pad={{ horizontal: "large" }}
+        background={album.colors.background}
+      >
+        <CardHeader>
+          <Heading>{album.title}</Heading>
+          <Box flex="grow" />
+          <Button
+            margin={{ vertical: "medium" }}
+            alignSelf="start"
+            hoverIndicator
+            onClick={onClose}
+            icon={<Close size={24} />}
+          />
+        </CardHeader>
+        <CardBody overflow={"auto"}>
+          <Text style={{ whiteSpace: "pre-line" }}>
+            {album.long_description}
+          </Text>
+        </CardBody>
+        <CardFooter pad="small" direction="column">
+          <MusicServices album={album} />
+        </CardFooter>
+      </Card>
+    </ThemeContext.Extend>
   );
 };
