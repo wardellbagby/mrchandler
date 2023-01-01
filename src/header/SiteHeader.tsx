@@ -18,7 +18,7 @@ export const SiteHeader = () => {
           alignSelf="center"
           align="center"
           fill
-          pad={{ horizontal: "xlarge", vertical: "medium" }}
+          pad={{ horizontal: "large", vertical: "medium" }}
         >
           <Box direction={"column"}>
             <Heading level={3} margin={"none"}>
