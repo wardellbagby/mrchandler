@@ -42292,7 +42292,7 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
   var albums = [
     {
       title: "7 Days After",
-      short_description: "7 days slacker",
+      short_description: "7 days slacker.",
       long_description: `For a 7 Days album, this one sure did take more iteration than I thought it would.
     
     When I sat down and made this album, I couldn't ever have seen where I'd go with it. I tell people all the time, "Hey, feel free to listen to my music, but it's really sad so be ready for that!" Few people quite realize exactly what I mean by that, especially after Dog Days.
