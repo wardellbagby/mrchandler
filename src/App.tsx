@@ -6,8 +6,8 @@ import { LargeAlbumList } from "./album/LargeAlbumList";
 const theme: ThemeType = {
   global: {
     colors: {
-      brand: "#5d4037",
-      background: "#c9ad7f",
+      brand: "#293338",
+      background: "#293338",
       "accent-1": "#ffffff",
     },
     font: {

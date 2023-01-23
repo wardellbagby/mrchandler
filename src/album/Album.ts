@@ -7,7 +7,7 @@ export interface Album {
   image: string;
   colors: {
     background: string;
-    text: string;
+    text: '#f5f5f5' | '#212121';
   };
   links: {
     spotify?: string;
