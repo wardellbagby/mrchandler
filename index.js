@@ -36483,7 +36483,30 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
     "Old Chandler had a farm",
     "Blessed",
     "I'm okay today",
-    "Not so far from the truth"
+    "Not so far from the truth",
+    "Wondering if it's worth it",
+    "Really in his feelings some more",
+    "Do you want to be free?",
+    "Back on the day shift",
+    "Doesn't want to live forever",
+    "Wanting to be his best",
+    "Outclassed by an O.G.",
+    "Has more blessings than enemies",
+    "Hit a little bit different",
+    "Got some exes still cursing his name",
+    "Got some verses that ain't hitting the same",
+    "Waiting. Wishing. Risking it all",
+    "Floating along",
+    "Can he reach his nirvana?",
+    "Can he leave all the trauma?",
+    "Springing forward, falling back",
+    "7 days painting his pictures",
+    "7 days with ya",
+    "Waiting for the sequel",
+    "Never getting over",
+    "Ready for some closure",
+    "Wearing it on his sleeve",
+    "Trying to be at peace"
   ];
   var getRandomSubtitle = () => {
     const index2 = Math.floor(Math.random() * subtitles.length);
@@ -42262,8 +42285,36 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
   // src/artwork/7 Days Later.png
   var Days_Later_default = "./7 Days Later-GQGV7URC.png";
 
+  // src/artwork/7 Days After.png
+  var Days_After_default = "./7 Days After-DR54HAUA.png";
+
   // src/album/getAlbums.ts
   var albums = [
+    {
+      title: "7 Days After",
+      short_description: "7 days slacker",
+      long_description: `For a 7 Days album, this one sure did take more iteration than I thought it would.
+    
+    When I sat down and made this album, I couldn't ever have seen where I'd go with it. I tell people all the time, "Hey, feel free to listen to my music, but it's really sad so be ready for that!" Few people quite realize exactly what I mean by that, especially after Dog Days.
+    
+    Well, let's not get it twisted; this is a sad album. Not quite how 7 Days Later was a sad album but...well, you'll see what I mean soon enough.
+    
+    That being said, this one is feeling pretty final. It's been 8 years since the first 7 Days, and I think it's time to branch out more and let this end with a trilogy. So, this will likely be the last 7 Days I ever make.
+    
+    So you know ya boy had to go out with a banger! 
+    `,
+      colors: {
+        background: "#293338",
+        text: "#f5f5f5"
+      },
+      image: Days_After_default,
+      links: {
+        spotify: "https://open.spotify.com/album/60x07v5WsrN6bK2smTnRYb",
+        apple_music: "https://music.apple.com/us/album/7-days-after/1661082164?app=music",
+        soundcloud: "https://soundcloud.com/mr-chandler/sets/7-days-after",
+        bandcamp: "https://mrchandler.bandcamp.com/album/7-days-after"
+      }
+    },
     {
       title: "Aries SZN",
       short_description: "Happy birthday, Mr. Chandler.",
@@ -43286,8 +43337,8 @@ Now, Mr. Chandler is back with an album inspired by and dedicated his girlfriend
   var theme = {
     global: {
       colors: {
-        brand: "#5d4037",
-        background: "#c9ad7f",
+        brand: "#293338",
+        background: "#293338",
         "accent-1": "#ffffff"
       },
       font: {
