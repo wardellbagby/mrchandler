@@ -26,7 +26,12 @@ const theme: ThemeType = deepMerge(grommet, {
 
 export const App = () => {
   return (
-    <Grommet theme={theme} full background="background" themeMode="auto">
+    <Grommet
+      theme={theme}
+      full
+      background="background"
+      options={{ box: { cssGap: true } }}
+    >
       <SiteHeader />
       <Main responsive fill={"horizontal"} align={"center"}>
         <Box width={"xlarge"}>

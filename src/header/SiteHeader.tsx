@@ -18,11 +18,13 @@ export const SiteHeader = () => {
           alignSelf="center"
           align="center"
           fill
+          wrap
+          gap="12px"
           pad={{ horizontal: "large", vertical: "medium" }}
         >
           <Box direction={"column"}>
             <Heading
-              level={3}
+              level={1}
               margin={"none"}
               style={{
                 fontFamily: '"Shadows Into Light Two", sans-serif',
@@ -34,8 +36,8 @@ export const SiteHeader = () => {
               <Text style={{ fontStyle: "italic" }}>{subtitle}</Text>
             </Box>
           </Box>
-          <Box flex="grow" />
-          <Nav direction="row-responsive">
+          <Box flex="grow" basis={"8px"} />
+          <Nav direction="row">
             <Button
               hoverIndicator
               icon={<AboutIcon size={24} />}
