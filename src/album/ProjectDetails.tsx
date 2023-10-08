@@ -10,18 +10,18 @@ import {
   ThemeContext,
 } from "grommet";
 import {
-  SiSpotify as Spotify,
   SiApplemusic as AppleMusic,
-  SiSoundcloud as Soundcloud,
   SiBandcamp as Bandcamp,
+  SiSoundcloud as Soundcloud,
+  SiSpotify as Spotify,
   SiTidal as Tidal,
 } from "react-icons/si";
 import { MdClose as Close } from "react-icons/md";
-import React, { ReactElement, useMemo } from "react";
-import { Album, getServiceLabel } from "./Album";
+import React, { ReactElement, useMemo, useState } from "react";
+import { getServiceLabel, Project } from "./Project";
 import { sendAnalyticsEvent } from "../sendAnalyticsEvent";
 
-const MusicServices = ({ album }: { album: Album }) => {
+const MusicServices = ({ album }: { album: Project }) => {
   const musicServices = useMemo(() => {
     return Object.keys(album.links)
       .map((service: keyof typeof album.links) => {
@@ -45,20 +45,22 @@ const MusicServices = ({ album }: { album: Album }) => {
 
         if (icon) {
           return (
-            <Button
-              hoverIndicator
-              icon={icon}
-              size={"small"}
-              tip={serviceLabel}
-              key={service}
-              onClick={() => {
-                sendAnalyticsEvent({
-                  title: `${album.title} - ${serviceLabel}`,
-                  path: album.links[service],
-                });
-                window.open(album.links[service]);
-              }}
-            />
+            <Box pad={"small"}>
+              <Button
+                hoverIndicator
+                icon={<Box pad={"small"}>{icon}</Box>}
+                key={service}
+                justify={"start"}
+                label={<Text size={"medium"}>{serviceLabel}</Text>}
+                onClick={() => {
+                  sendAnalyticsEvent({
+                    title: `${album.title} - ${serviceLabel}`,
+                    path: album.links[service],
+                  });
+                  window.open(album.links[service]);
+                }}
+              />
+            </Box>
           );
         }
       })
@@ -66,22 +68,33 @@ const MusicServices = ({ album }: { album: Album }) => {
   }, []);
 
   return (
-    <Box direction="row" fill justify="between" wrap={true}>
+    <Box direction="column" fill justify="between" wrap={true}>
       {musicServices}
     </Box>
   );
 };
 
-export const AlbumDetails = ({
+export const ProjectDetails = ({
   album,
   onClose,
 }: {
-  album: Album;
+  album: Project;
   onClose: () => void;
 }) => {
+  const [showProjectDescription, setShowProjectDescription] = useState(false);
+  const buttonLabel = `${
+    showProjectDescription ? "Less" : "More"
+  } about this project`;
   return (
     <ThemeContext.Extend
       value={{
+        global: {
+          colors: {
+            brand: album.colors.text,
+            "accent-1": album.colors.text,
+            background: album.colors.background,
+          },
+        },
         tip: {
           content: {
             background: album.colors.background,
@@ -95,7 +108,7 @@ export const AlbumDetails = ({
         background={album.colors.background}
       >
         <CardHeader>
-          <Heading>{album.title}</Heading>
+          <Heading>Listen to {album.title}</Heading>
           <Box flex="grow" />
           <Button
             margin={{ vertical: "medium" }}
@@ -106,12 +119,22 @@ export const AlbumDetails = ({
           />
         </CardHeader>
         <CardBody overflow={"auto"}>
-          <Text style={{ whiteSpace: "pre-line" }}>
-            {album.long_description}
-          </Text>
+          <MusicServices album={album} />
         </CardBody>
         <CardFooter pad="small" direction="column">
-          <MusicServices album={album} />
+          <Box height={"8px"} />
+          <Button
+            primary
+            label={buttonLabel}
+            onClick={() => setShowProjectDescription(!showProjectDescription)}
+          />
+          {showProjectDescription && (
+            <Box pad={"small"}>
+              <Text size={"medium"} style={{ whiteSpace: "pre-line" }}>
+                {album.long_description}
+              </Text>
+            </Box>
+          )}
         </CardFooter>
       </Card>
     </ThemeContext.Extend>

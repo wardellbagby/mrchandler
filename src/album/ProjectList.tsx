@@ -1,15 +1,15 @@
 import React from "react";
-import { LargeAlbum } from "./LargeAlbum";
+import { ProjectListItem } from "./ProjectListItem";
 import { Box, Layer, List, Spinner, Text } from "grommet";
 import { assign, createMachine, EventObject } from "xstate";
-import { getAlbums } from "./getAlbums";
+import { getProjects } from "./getProjects";
 import { useMachine } from "@xstate/react";
-import { Album, getId } from "./Album";
-import { AlbumDetails } from "./AlbumDetails";
+import { getId, Project } from "./Project";
+import { ProjectDetails } from "./ProjectDetails";
 import { Route, Routes, useNavigate } from "react-router-dom";
 
 interface AlbumListContext {
-  albums: Album[];
+  albums: Project[];
 }
 
 interface AlbumListEvent extends EventObject {
@@ -34,7 +34,7 @@ const albumListMachine = createMachine<
     loading: {
       invoke: {
         id: "loadAlbums",
-        src: getAlbums,
+        src: getProjects,
         onDone: {
           target: "resolved",
           actions: assign({
@@ -55,7 +55,7 @@ const albumListMachine = createMachine<
   },
 });
 
-export const LargeAlbumList = () => {
+export const ProjectList = () => {
   const [state] = useMachine(albumListMachine);
   const goTo = useNavigate();
 
@@ -79,10 +79,11 @@ export const LargeAlbumList = () => {
       <List
         data={state.context.albums}
         margin={"none"}
-        pad={"none"}
+        pad={"medium"}
         border={false}
-        children={(album) => (
-          <LargeAlbum
+        children={(album, index) => (
+          <ProjectListItem
+            isLatest={index === 0}
             key={album.title}
             album={album}
             onClick={() => goTo({ pathname: `/music/${getId(album)}` })}
@@ -102,7 +103,7 @@ export const LargeAlbumList = () => {
                   background={"#00000000"}
                   responsive={false}
                 >
-                  <AlbumDetails album={album} onClose={() => goTo(-1)} />
+                  <ProjectDetails album={album} onClose={() => goTo(-1)} />
                 </Layer>
               }
             />

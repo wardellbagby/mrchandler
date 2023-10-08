@@ -22,11 +22,14 @@
     "typescript": "^4.9.4"
   },
   "dependencies": {
+    "@fontsource-variable/lexend": "^5.0.15",
     "@fontsource/roboto": "^4.5.8",
+    "@types/luxon": "^3.3.2",
     "@types/react-dom": "^18.0.9",
     "@xstate/react": "^3.0.1",
-    "grommet": "^2.28.0",
+    "grommet": "^2.33.2",
     "lodash-es": "^4.17.21",
+    "luxon": "^3.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",

@@ -3,12 +3,16 @@ import DogDays from "../artwork/Dog Days.png";
 import SevenDaysWonder from "../artwork/7 Days Wonder.png";
 import SevenDaysLater from "../artwork/7 Days Later.png";
 import SevenDaysAfter from "../artwork/7 Days After.png";
-import { Album } from "./Album";
+import { Project } from "./Project";
+import { DateTime } from "luxon";
 
-const albums: Album[] = [
+const projects: Project[] = [
   {
+    type: "album",
+    released: DateTime.fromObject({ year: 2023, month: 1, day: 23 }),
     title: "7 Days After",
-    short_description: "7 days slacker.",
+    short_description:
+      "The end of the trilogy but not the end of Mr. Chandler.",
     long_description: `For a 7 Days album, this one sure did take more iteration than I thought it would.
     
     When I sat down and made this album, I couldn't ever have seen where I'd go with it. I tell people all the time, "Hey, feel free to listen to my music, but it's really sad so be ready for that!" Few people quite realize exactly what I mean by that, especially after Dog Days.
@@ -33,8 +37,11 @@ const albums: Album[] = [
     },
   },
   {
+    type: "ep",
+    released: DateTime.fromObject({ year: 2021, month: 3, day: 30 }),
     title: "Aries SZN",
-    short_description: "Happy birthday, Mr. Chandler.",
+    short_description:
+      "A birthday present from me to you. I got you a 3-piece to celebrate.",
     long_description: `Happy birthday to me.
     
     Imagine this: it's 2021 and you're an entire year through a pandemic with no end in sight. You hop online and check Discord, and WHAM, @awave drops a little three-piece combo on you with some of the sickest beats you've ever heard in your LIFE. You haven't written a song in months and you're itching to make something sonically new.
@@ -48,7 +55,7 @@ const albums: Album[] = [
     I obviously chose none of those and instead dropped Aries SZN. I can honestly say I've never made anything that sounds quite like this and I'm not even sure I could do it again if I tried. It's short but so very sweet.`,
     colors: {
       background: "#c9ad7f",
-      text: "#f5f5f5",
+      text: "#212121",
     },
     image: AriesSZN,
     links: {
@@ -59,8 +66,11 @@ const albums: Album[] = [
     },
   },
   {
+    type: "ep",
+    released: DateTime.fromObject({ year: 2019, month: 7, day: 22 }),
     title: "Dog Days",
-    short_description: "Happy wedding day, my love.",
+    short_description:
+      "Released on the same day I got married. Come and fall in love like I did.",
     long_description: `Ya boy went and fell in love.
     
     Yeah, I got sappy on you. So what? I married the love of my life in 2019 and like any true artist does, I dropped this album the same day I got married.
@@ -85,8 +95,11 @@ const albums: Album[] = [
     },
   },
   {
+    type: "album",
+    released: DateTime.fromObject({ year: 2018, month: 1, day: 7 }),
     title: "7 Days Later",
-    short_description: "7 days greater.",
+    short_description:
+      "An exploration of depression from a man who still hasn't figured it out.",
     long_description: `Hey, y'all. It's been a while, huh? 7 Days Wonder feels like a lifetime ago. It's honestly been just over two years. When I released 7 Days Wonder, I swear I had all intentions of putting out another album in 2016. I had two albums made in 2017, to be honest. Neither felt right.
 
     It's not quite my stylo to revisit the same topics musically, and that's why I didn't. 7 Days Wonder was made in seven days and that was the whole point of it. I hadn't released any new projects in three years at that point and I felt that I didn't want to completely drop off the face of the earth.
@@ -111,9 +124,11 @@ const albums: Album[] = [
     },
   },
   {
+    type: "album",
+    released: DateTime.fromObject({ year: 2015, month: 12, day: 21 }),
     title: "7 Days Wonder",
-    short_description: "7 days blunder.",
-    long_description: `A mixtape created in 7 days.
+    short_description: "The one that started it all: created in 7 days.",
+    long_description: `An album created in 7 days.
 
     @hobbes-duende on production, what a guy!
     
@@ -148,6 +163,16 @@ const albums: Album[] = [
   },
 ];
 
-export const getAlbums = async () => {
-  return albums;
+export const getProjects = async () => {
+  return projects.sort((a, b) => {
+    if (a.released.toMillis() === b.released.toMillis()) {
+      return 0;
+    }
+
+    if (a.released > b.released) {
+      return -1;
+    }
+
+    return 1;
+  });
 };

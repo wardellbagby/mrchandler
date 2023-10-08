@@ -1,5 +1,5 @@
-import { Header, Box, Heading, Nav, Button, Layer, Text } from "grommet";
-import { SiTwitter as Twitter } from "react-icons/si";
+import { Box, Button, Header, Heading, Layer, Nav, Text } from "grommet";
+import { SiInstagram as Instagram } from "react-icons/si";
 import { MdInfo as AboutIcon } from "react-icons/md";
 import React from "react";
 import { About } from "./About";
@@ -12,7 +12,7 @@ export const SiteHeader = () => {
   const goTo = useNavigate();
   return (
     <>
-      <Header background={"brand"} pad={"xxsmall"} sticky={"scrollup"}>
+      <Header background={"brand"} pad={"xxsmall"}>
         <Box
           direction="row"
           alignSelf="center"
@@ -43,13 +43,13 @@ export const SiteHeader = () => {
             />
             <Button
               hoverIndicator
-              icon={<Twitter size={24} />}
-              label={"Twitter"}
+              icon={<Instagram size={24} />}
+              label={"Instagram"}
               onClick={() => {
-                const url = "https://twitter.com/mrchandlerraps";
+                const url = "https://instagram.com/californiachand";
                 sendAnalyticsEvent({
                   path: url,
-                  title: "Twitter",
+                  title: "Instagram",
                 });
                 window.open(url);
               }}
