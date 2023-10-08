@@ -64,7 +64,7 @@ const ProjectTitle = (props: {
   showLatestBanner: boolean;
 }) => {
   return (
-    <Box direction={"row"}>
+    <Box direction={"row"} wrap gap={"medium"}>
       <Heading color={props.color}>{props.title}</Heading>
       {props.showLatestBanner && <LatestBanner />}
     </Box>
@@ -83,7 +83,7 @@ const ProjectImage = (props: { image: string }) => {
 
 const LatestBanner = () => {
   return (
-    <Box justify={"center"} pad={"medium"}>
+    <Box justify={"center"}>
       <Box
         background={"status-ok"}
         pad={"8px"}
@@ -91,7 +91,7 @@ const LatestBanner = () => {
           borderRadius: "16px",
         }}
       >
-        <Text style={{ fontWeight: "bold" }}>New release!</Text>
+        <Text style={{ fontWeight: "bold" }}>New</Text>
       </Box>
     </Box>
   );

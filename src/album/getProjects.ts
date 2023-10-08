@@ -3,10 +3,32 @@ import DogDays from "../artwork/Dog Days.png";
 import SevenDaysWonder from "../artwork/7 Days Wonder.png";
 import SevenDaysLater from "../artwork/7 Days Later.png";
 import SevenDaysAfter from "../artwork/7 Days After.png";
+import Uppercut from "../artwork/Uppercut.png";
 import { Project } from "./Project";
 import { DateTime } from "luxon";
 
 const projects: Project[] = [
+  {
+    type: "single",
+    released: DateTime.fromObject({ year: 2023, month: 7, day: 21 }),
+    title: "Uppercut",
+    short_description:
+      "A song for the summer you can play in the winter, too. Hit me up!",
+    long_description: `The first single from my soon-to-be-released next album: a collaboration with this wonderful producer named HitDawg. This that joint you play at the BBQ and your uncle says "Ayy, who's this young blood?" until he hears me say "fucked in your vestibule" and makes you turn if off.
+    
+    It's FIRE up until that point, though.`,
+    colors: {
+      background: "#03aaf0",
+      text: "#212121",
+    },
+    image: Uppercut,
+    links: {
+      spotify:
+        "https://open.spotify.com/track/0HG8I3BXYWqntSDyxmIfaI?si=2dd6deb03ea343dd",
+      apple_music:
+        "https://music.apple.com/us/album/uppercut-feat-hitdawg/1696412248?i=1696412249",
+    },
+  },
   {
     type: "album",
     released: DateTime.fromObject({ year: 2023, month: 1, day: 23 }),

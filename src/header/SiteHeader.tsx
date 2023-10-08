@@ -21,7 +21,13 @@ export const SiteHeader = () => {
           pad={{ horizontal: "large", vertical: "medium" }}
         >
           <Box direction={"column"}>
-            <Heading level={3} margin={"none"}>
+            <Heading
+              level={3}
+              margin={"none"}
+              style={{
+                fontFamily: '"Shadows Into Light Two", sans-serif',
+              }}
+            >
               Mr. Chandler
             </Heading>
             <Box pad={{ vertical: "xsmall" }}>

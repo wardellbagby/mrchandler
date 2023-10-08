@@ -4,12 +4,13 @@ import { deepMerge } from "grommet/utils";
 import { SiteHeader } from "./header/SiteHeader";
 import { ProjectList } from "./album/ProjectList";
 import "@fontsource-variable/lexend";
+import "@fontsource/shadows-into-light-two/index.css";
 
 const theme: ThemeType = deepMerge(grommet, {
   global: {
     colors: {
-      brand: "#293338",
-      background: "#21292d",
+      background: "#212121",
+      brand: "#212121",
       "accent-1": "#ffffff",
     },
     font: {

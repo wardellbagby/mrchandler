@@ -40,6 +40,12 @@ const subtitles = [
   "Ready for some closure",
   "Wearing it on his sleeve",
   "Trying to be at peace",
+  "Tell me what's up?",
+  "Hit me up like an uppercut!",
+  "Make an atheist from an Amish",
+  "Make me traitorous to my momma!",
+  "Shawty, you're my 7 days wonder",
+  "Guess you need my number, huh?",
 ];
 export const getRandomSubtitle = () => {
   const index = Math.floor(Math.random() * subtitles.length);

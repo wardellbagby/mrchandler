@@ -119,23 +119,28 @@ export const ProjectDetails = ({
           />
         </CardHeader>
         <CardBody overflow={"auto"}>
-          <MusicServices album={album} />
-        </CardBody>
-        <CardFooter pad="small" direction="column">
+          <Box flex={{ grow: 1, shrink: 0 }}>
+            <MusicServices album={album} />
+          </Box>
           <Box height={"8px"} />
-          <Button
-            primary
-            label={buttonLabel}
-            onClick={() => setShowProjectDescription(!showProjectDescription)}
-          />
-          {showProjectDescription && (
-            <Box pad={"small"}>
-              <Text size={"medium"} style={{ whiteSpace: "pre-line" }}>
-                {album.long_description}
-              </Text>
-            </Box>
-          )}
-        </CardFooter>
+          <Box pad={{ vertical: "medium" }}>
+            <Button
+              primary
+              label={buttonLabel}
+              onClick={() => setShowProjectDescription(!showProjectDescription)}
+            />
+            {showProjectDescription && (
+              <>
+                <Box pad={{ vertical: "small" }}>
+                  <Text size={"medium"} style={{ whiteSpace: "pre-line" }}>
+                    {album.long_description}
+                  </Text>
+                </Box>
+                <Box height={"8px"} />
+              </>
+            )}
+          </Box>
+        </CardBody>
       </Card>
     </ThemeContext.Extend>
   );
