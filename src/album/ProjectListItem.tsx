@@ -28,7 +28,7 @@ export const ProjectListItem = ({
           onClick();
         }}
       >
-        <Box width={"100%"} height={"auto"} direction={"row"}>
+        <Box width={"100%"} height={"auto"} direction={"row"} align={"center"}>
           <ProjectImage image={album.image} />
           <Box
             flex={{ grow: 0, shrink: 2 }}
@@ -74,9 +74,7 @@ const ProjectTitle = (props: {
 const ProjectImage = (props: { image: string }) => {
   return (
     <Box justify={"center"} basis={"200px"} flex={{ grow: 0, shrink: 1 }}>
-      <Stack anchor={"top-left"}>
-        <Image height={"auto"} width={"100%"} fit="cover" src={props.image} />
-      </Stack>
+      <Image height={"auto"} width={"100%"} fit="cover" src={props.image} />
     </Box>
   );
 };
