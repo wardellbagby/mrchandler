@@ -92,16 +92,8 @@ const projects: Project[] = [
     released: DateTime.fromObject({ year: 2019, month: 7, day: 22 }),
     title: "Dog Days",
     short_description:
-      "Released on the same day I got married. Come and fall in love like I did.",
-    long_description: `Ya boy went and fell in love.
-    
-    Yeah, I got sappy on you. So what? I married the love of my life in 2019 and like any true artist does, I dropped this album the same day I got married.
-    
-    Nothing quite like telling your soon-to-be-wife hold on a second while you make sure all the social media posts announcing the album go out at the right time.
-    
-    I've heard all of the "The Big Day" comparisons already so please spare me.
-    
-    This is good ol' home-fashion, poppy, lovey-dovey, summertime music. This is what they would've played on the ride to summer camp while you eye that little cutie you're hoping to make your acquitance that's a few rows ahead on you on the bus.
+      "Come and fall in love with a summertime vibe.",
+    long_description: `This is good ol' home-fashion, poppy, lovey-dovey, summertime music. This is what they would've played on the ride to summer camp while you eye that little cutie you're hoping to make your acquitance that's a few rows ahead on you on the bus.
     
     Here's to your love story.`,
     colors: {
