@@ -456,15 +456,7 @@ Event: `).concat(JSON.stringify(event)));else if(this.status!==d0.Running)throw 
     2. Write a new app?
     3. Drop one of the hottest EPs of all time?
     
-    I obviously chose none of those and instead dropped Aries SZN. I can honestly say I've never made anything that sounds quite like this and I'm not even sure I could do it again if I tried. It's short but so very sweet.`,colors:{background:"#c9ad7f",text:"#212121"},image:MV,links:{spotify:"https://open.spotify.com/album/2584fVnDZNO6fnYU661Dgq",apple_music:"https://music.apple.com/us/album/aries-szn-single/1560447681",soundcloud:"https://soundcloud.com/mr-chandler/sets/aries-szn"}},{type:"ep",released:c1.fromObject({year:2019,month:7,day:22}),title:"Dog Days",short_description:"Released on the same day I got married. Come and fall in love like I did.",long_description:`Ya boy went and fell in love.
-    
-    Yeah, I got sappy on you. So what? I married the love of my life in 2019 and like any true artist does, I dropped this album the same day I got married.
-    
-    Nothing quite like telling your soon-to-be-wife hold on a second while you make sure all the social media posts announcing the album go out at the right time.
-    
-    I've heard all of the "The Big Day" comparisons already so please spare me.
-    
-    This is good ol' home-fashion, poppy, lovey-dovey, summertime music. This is what they would've played on the ride to summer camp while you eye that little cutie you're hoping to make your acquitance that's a few rows ahead on you on the bus.
+    I obviously chose none of those and instead dropped Aries SZN. I can honestly say I've never made anything that sounds quite like this and I'm not even sure I could do it again if I tried. It's short but so very sweet.`,colors:{background:"#c9ad7f",text:"#212121"},image:MV,links:{spotify:"https://open.spotify.com/album/2584fVnDZNO6fnYU661Dgq",apple_music:"https://music.apple.com/us/album/aries-szn-single/1560447681",soundcloud:"https://soundcloud.com/mr-chandler/sets/aries-szn"}},{type:"ep",released:c1.fromObject({year:2019,month:7,day:22}),title:"Dog Days",short_description:"Come and fall in love with a summertime vibe.",long_description:`This is good ol' home-fashion, poppy, lovey-dovey, summertime music. This is what they would've played on the ride to summer camp while you eye that little cutie you're hoping to make your acquitance that's a few rows ahead on you on the bus.
     
     Here's to your love story.`,colors:{background:"#25c6da",text:"#212121"},image:xV,links:{spotify:"https://open.spotify.com/album/6vZhSRf3uirfTA9eCF2JIo",apple_music:"https://music.apple.com/us/album/dog-days-ep/1470322319",soundcloud:"https://soundcloud.com/mr-chandler/sets/dog-days",bandcamp:"https://mrchandler.bandcamp.com/album/dog-days"}},{type:"album",released:c1.fromObject({year:2018,month:1,day:7}),title:"7 Days Later",short_description:"An exploration of depression from a man who still hasn't figured it out.",long_description:`Hey, y'all. It's been a while, huh? 7 Days Wonder feels like a lifetime ago. It's honestly been just over two years. When I released 7 Days Wonder, I swear I had all intentions of putting out another album in 2016. I had two albums made in 2017, to be honest. Neither felt right.
 
